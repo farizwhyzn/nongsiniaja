@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Place;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -15,15 +16,8 @@ class PlaceController extends Controller
      */
     public function index(Request $request): Response
     {
-//        $location = $request->query('location');
-//        $query = Place::query();
-//        if ($location) {
-//            $query->where('location', $location);
-//        }
-
         return Inertia::render('Places/Index', [
-            'places' => Place::with('name')->latest()->get(),
-//            'random_place' => $query->orderByRaw('RAND()')->first(),
+            'places' => DB::table('places')->where('verified', 0)->latest()->get(),
         ]);
     }
 
