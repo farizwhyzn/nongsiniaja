@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('places', PlaceController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'create', 'store'])
     ->middleware(['auth']);
 
 require __DIR__.'/auth.php';
