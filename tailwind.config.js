@@ -20,6 +20,9 @@ export default {
             },
         },
         extend: {
+            fontFamily: {
+                sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
+            },
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
