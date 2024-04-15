@@ -83,11 +83,11 @@ defineProps(['places']);
                     </div>
                     <div class="grid gap-2">
                         <Label for="min_price">Min Price</Label>
-                        <Input id="min_price" v-model="form.min_price" required />
+                        <Input id="min_price" type="number" v-model="form.min_price" required />
                     </div>
                     <div class="grid gap-2">
                         <Label for="max_price">Max Price</Label>
-                        <Input id="max_price" v-model="form.max_price" required />
+                        <Input id="max_price" type="number" v-model="form.max_price" required />
                     </div>
                     <div class="grid gap-2">
                         <Label for="parking_fee">Parking Fee</Label>
