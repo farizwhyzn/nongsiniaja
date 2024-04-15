@@ -17,7 +17,7 @@ class PlaceController extends Controller
     public function index(Request $request): Response
     {
         return Inertia::render('Places/Index', [
-            'places' => DB::table('places')->where('verified', 0)->latest()->get(),
+            'places' => DB::table('places')->where('verified', 1)->latest()->get(),
         ]);
     }
 
