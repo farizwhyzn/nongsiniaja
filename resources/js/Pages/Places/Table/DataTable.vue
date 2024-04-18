@@ -17,7 +17,7 @@ import {
 } from "@/Components/ui/table"
 import { Input } from '@/Components/ui/input'
 import { valueUpdater } from '@/utils'
-import {ref} from "vue";
+import { ref } from "vue";
 import {Button} from "@/Components/ui/button";
 
 const props = defineProps<{
@@ -48,15 +48,17 @@ const table = useVueTable({
         get rowSelection() { return rowSelection.value },
     },
 })
+
 </script>
 
 <template>
     <div class="flex items-center justify-between py-4">
-        <Input class="max-w-sm" placeholder="Filter places..."
+        <Input class="max-w-32 sm:max-w-sm" placeholder="Filter places..."
                :model-value="table.getColumn('name')?.getFilterValue() as string"
                @update:model-value=" table.getColumn('name')?.setFilterValue($event)" />
+
         <a href="/places/create" >
-            <Button>Add New Tongkrongan</Button>
+            <Button>Add Tongkrongan</Button>
         </a>
     </div>
     <div class="border rounded-md">
@@ -88,8 +90,27 @@ const table = useVueTable({
             </TableBody>
         </Table>
     </div>
-    <div class="flex-1 text-sm text-muted-foreground">
-        {{ table.getFilteredSelectedRowModel().rows.length }} of
-        {{ table.getFilteredRowModel().rows.length }} row(s) selected.
+    <div class="flex items-center justify-between">
+        <div class="flex-1 text-sm text-muted-foreground">
+            {{ table.getFilteredRowModel().rows.length }} row(s) rendered.
+        </div>
+        <div class="flex items-center justify-end py-4 space-x-2">
+            <Button
+                variant="outline"
+                size="sm"
+                :disabled="!table.getCanPreviousPage()"
+                @click="table.previousPage()"
+            >
+                Previous
+            </Button>
+            <Button
+                variant="outline"
+                size="sm"
+                :disabled="!table.getCanNextPage()"
+                @click="table.nextPage()"
+            >
+                Next
+            </Button>
+        </div>
     </div>
 </template>

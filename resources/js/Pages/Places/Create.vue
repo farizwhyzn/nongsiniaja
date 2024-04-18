@@ -7,15 +7,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/Components/ui/button'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/Components/ui/select'
 import { RadioGroup, RadioGroupItem } from '@/Components/ui/radio-group'
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from '@/Components/ui/table'
 
 const form = useForm({
     name: '',
@@ -110,40 +101,5 @@ defineProps(['places']);
                 </CardFooter>
             </form>
         </Card>
-
-
-    </div>
-
-    <div class="border rounded-md">
-        <Table>
-            <TableBody>
-                <TableRow v-for="place in places" :key="place.id">
-                    <TableCell>
-                        {{ place.name }}
-                    </TableCell>
-                    <TableCell>
-                        {{ place.location }}
-                    </TableCell>
-                    <TableCell>
-                        {{ place.open_at }}
-                    </TableCell>
-                    <TableCell>
-                        {{ place.close_at }}
-                    </TableCell>
-                    <TableCell>
-                        {{ place.min_price }}
-                    </TableCell>
-                    <TableCell>
-                        {{ place.max_price }}
-                    </TableCell>
-                    <TableCell>
-                        {{ place.parking_fee }}
-                    </TableCell>
-                    <TableCell>
-                        {{ place.verified }}
-                    </TableCell>
-                </TableRow>
-            </TableBody>
-        </Table>
     </div>
 </template>

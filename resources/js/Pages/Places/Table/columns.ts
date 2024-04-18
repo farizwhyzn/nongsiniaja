@@ -22,6 +22,11 @@ export const columns: ColumnDef<unknown>[] = [
         enableHiding: false,
     },
     {
+        accessorKey: 'id',
+        header: 'No.',
+        cell: ({ row }) => h('div', { class: 'text-center' }, row.getValue('id')),
+    },
+    {
         accessorKey: 'name',
         header: ({ column }) => {
             return h(Button, {
@@ -109,6 +114,6 @@ export const columns: ColumnDef<unknown>[] = [
                 onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
             }, () => ['Parking Fee', h(ArrowUpDown, { class: 'ml-2 h-4 w-4' })])
         },
-        cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('parking_fee') === 1 ? 'Yes' : 'No' ),
+        cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('parking_fee') === true ? 'Yes' : 'No' ),
     },
 ]
